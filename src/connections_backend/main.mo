@@ -80,6 +80,28 @@ actor User {
     return data;
   };
 
+
+   //delete user 
+   public func delete(user_id: UserId): async Bool {
+    //find data we want to update
+    let resultUser = Trie.find(users, key(user_id), Nat32.equal);
+
+    let data = Option.isSome(resultUser);
+
+    if(data) {
+     users := Trie.replace(
+        users,             // Current Trie
+        key(user_id),       // Key to insert/replace
+        Nat32.equal,
+        null,            // Value (user data) to associate with the key
+               // Equality function for key comparison
+      ).0;                 // Extract the updated Trie from the result tuple
+
+    };
+
+    return data;
+  };
+
   //generate a key to be used in the trie
    private func key(x : UserId) : Trie.Key<UserId> {
       return {hash = x; key = x};  // Create a Trie Key from the UserId
