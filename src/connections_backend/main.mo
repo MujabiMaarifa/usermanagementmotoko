@@ -2,7 +2,7 @@ import Iter "mo:base/Iter";
 import Trie "mo:base/Trie";
 import Nat32 "mo:base/Nat32";
 import Option "mo:base/Option";
-import Time "mo:base/Time";
+
 
 
 actor User {
@@ -14,8 +14,6 @@ actor User {
       firstname: Text;
       lastname: Text;
       email: Text;
-      createdAt: Time.Time;
-      // registeredAt: Timestamp;
    };
 
   // stable var for generating user ids -> stable to persist throughout the smart contract invocation
